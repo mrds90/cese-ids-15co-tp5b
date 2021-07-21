@@ -23,32 +23,45 @@
 
 /*=====[Definitions of external public global variables]=====================*/
 
-/*=====[Definitions of public global variables]==============================*/
-
+/*=====[Definitions of private global variables]==============================*/
+/**
+ * @brief Datos del alumno ESTEBAN_VOLENTINI
+ * 
+ */
 static const struct alumno_s ESTEBAN_VOLENTINI = {
     .apellidos = "VOLENTINI",
     .nombres = "Esteban Daniel",
     .documento = "23.517.968",
 };
 
+/**
+ * @brief Datos del alumno ALEJANDRO_PERMINGEAT
+ * 
+ */
 static const struct alumno_s ALEJANDRO_PERMINGEAT = {
     .apellidos = "PERMINGEAT",
     .nombres = "Alejandro",
     .documento = "99.999.999",
 };
 
+/**
+ * @brief Datos del alumno MARCOS_DOMINGUEZ
+ * 
+ */
 static const struct alumno_s MARCOS_DOMINGUEZ = {
     .apellidos = "DOMINGUEZ",
     .nombres = "Marcos Raul",
     .documento = "35219567",
 };
 
+/// Lista de alumnos.
 const alumno_t ALUMNOS[] = {
     &ESTEBAN_VOLENTINI,
     &ALEJANDRO_PERMINGEAT,
     &MARCOS_DOMINGUEZ,
 };
 
+/// Cantidad de alumnos en la lista
 const int CANTIDAD_ALUMNOS = (sizeof(ALUMNOS) / sizeof(alumno_t));
 
 /*=====[Definitions of private global variables]=============================*/
@@ -74,12 +87,11 @@ bool SerializarAlumno(char * cadena, size_t espacio, const alumno_t alumno) {
 }
 
 bool SerializarAlumnos(char * cadena, size_t espacio) {
-    static const int  cantidad = sizeof(ALUMNOS) / sizeof(alumno_t);
     int posicion = snprintf(cadena, espacio, "[\r\n  ");
     bool resultado = (posicion > 0);
 
     if (resultado){
-        for(int indice = 0; indice < cantidad; indice++ ) {
+        for(int indice = 0; indice < CANTIDAD_ALUMNOS; indice++ ) {
             resultado = SerializarAlumno(&cadena[posicion], espacio - posicion, ALUMNOS[indice]);
             if (resultado) {
                 posicion += strlen(&cadena[posicion]);

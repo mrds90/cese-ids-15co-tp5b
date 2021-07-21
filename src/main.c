@@ -33,7 +33,9 @@
 /*=====[Implementations of interrupt functions]==============================*/
 
 /*=====[Implementations of private functions]================================*/
-
+/**
+ * @brief Aplicación que genera un JSON con la lista de alumnos y lo imprime por serie
+ */
 int main(int argc, char *argv[]) {
     char cadena[2048];
 
